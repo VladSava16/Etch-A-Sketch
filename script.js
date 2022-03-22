@@ -1,4 +1,14 @@
 const gridContainer = document.querySelector('.grid');
+const clearBtn = document.querySelector('#clear');
+
+function Clear(){
+    const filled = document.querySelectorAll('.clicked');
+    filled.forEach(btn => {
+        btn.classList.remove('clicked');
+    })
+}
+
+clearBtn.addEventListener('click', Clear);
 
 for(let i = 1; i <= 16; i++){
     let row = document.createElement('div');
