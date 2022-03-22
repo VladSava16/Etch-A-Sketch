@@ -4,6 +4,7 @@ const clearBtn = document.querySelector('#clear');
 GenerateGrid(16);
 
 let ok = 0;
+let erase = 0;
 
 clearBtn.addEventListener('click', Clear);
 function Clear(){
@@ -30,27 +31,35 @@ function GenerateGrid(x){
         box.addEventListener('mouseover', (e) => {
         if(e.buttons == 1){
             colorBoxes(e);
-            e.target.classList.add("clicked");
+            if(erase == 0)
+                e.target.classList.add("clicked");
         }
     })
         box.addEventListener('mousedown', (e) => {
             colorBoxes(e);
             e.preventDefault();
-            e.target.classList.add("clicked");
+            if(erase == 0)
+                e.target.classList.add("clicked");
     })});
 }
 
 function colorBoxes(box){
-    if(box.target.classList.value == "grid-box clicked"){}
-    else{
-        if(ok == 0){
-            let randomColor = generateRandomColor();
-            box.target.style["background-color"] = `#${randomColor}`;
-        }
-        else{
-            box.target.style["background-color"] = "cyan";
-        }
+    if(erase == 1){
+        box.target.style["background-color"] = "white";
+        box.target.classList.remove('clicked');
     }
+    else{
+    if(box.target.classList.value == "grid-box clicked"){}
+        else{
+            if(ok == 0){
+                let randomColor = generateRandomColor();
+                box.target.style["background-color"] = `#${randomColor}`;
+            }
+            else{
+                box.target.style["background-color"] = "cyan";
+            }
+        }
+}
 }
 
 function generateRandomColor(){
@@ -70,7 +79,9 @@ document.getElementById('rainbow').addEventListener('click', () => {
         ok = 0;
     else
         ok = 1;
+    erase = 0;
 });
+document.getElementById('erase').addEventListener('click', () => erase = 1);
 
 
 
