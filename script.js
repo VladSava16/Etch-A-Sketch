@@ -4,10 +4,10 @@ const colorPicker = document.getElementById('fillColor');
 
 GenerateGrid(16);
 
-let ok = 0;
+let ok = 1;
 let erase = 0;
 
-let fillColor;
+let fillColor = "#FF0000";
 colorPicker.addEventListener('change', (e) => fillColor = e.target.value);
 
 clearBtn.addEventListener('click', Clear);
@@ -79,10 +79,7 @@ document.getElementById('option-one').addEventListener('click', () => GenerateGr
 document.getElementById('option-two').addEventListener('click', () => GenerateGrid(32));
 document.getElementById('option-three').addEventListener('click', () => GenerateGrid(64));
 document.getElementById('rainbow').addEventListener('click', () => {
-    if(ok == 1)
-        ok = 0;
-    else
-        ok = 1;
+    ok = 0;
     erase = 0;
 });
 document.getElementById('erase').addEventListener('click', () => erase = 1);
