@@ -28,22 +28,28 @@ function GenerateGrid(x){
     let gridBoxes = document.querySelectorAll('.grid-box');
     gridBoxes.forEach((box) =>{
         box.addEventListener('mouseover', (e) => {
-        if(e.buttons == 1)
+        if(e.buttons == 1){
             colorBoxes(e);
+            e.target.classList.add("clicked");
+        }
     })
         box.addEventListener('mousedown', (e) => {
             colorBoxes(e);
             e.preventDefault();
+            e.target.classList.add("clicked");
     })});
 }
 
 function colorBoxes(box){
-    if(ok == 0){
-        let randomColor = generateRandomColor();
-        box.target.style["background-color"] = `#${randomColor}`;
-    }
+    if(box.target.classList.value == "grid-box clicked"){}
     else{
-        box.target.style["background-color"] = "cyan";
+        if(ok == 0){
+            let randomColor = generateRandomColor();
+            box.target.style["background-color"] = `#${randomColor}`;
+        }
+        else{
+            box.target.style["background-color"] = "cyan";
+        }
     }
 }
 
