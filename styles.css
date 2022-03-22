@@ -5,8 +5,8 @@ body{
 .grid{
     display: flex;
     flex-direction: column;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
     justify-content: stretch;
     flex-wrap: nowrap;
 }
