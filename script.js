@@ -13,7 +13,11 @@ for(let i = 1; i <= 16; i++){
 
 const gridBoxes = document.querySelectorAll('.grid-box');
 
-gridBoxes.forEach((box) => box.addEventListener('mouseover', (e) => {
+gridBoxes.forEach((box) =>{
+    box.addEventListener('mouseover', (e) => {
     if(e.buttons == 1)
         e.target.classList.add('clicked');
-}));
+})
+    box.addEventListener('mousedown', (e) => {
+        e.target.classList.add('clicked');
+})});
