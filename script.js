@@ -1,10 +1,14 @@
 const gridContainer = document.querySelector('.grid');
 const clearBtn = document.querySelector('#clear');
+const colorPicker = document.getElementById('fillColor');
 
 GenerateGrid(16);
 
 let ok = 0;
 let erase = 0;
+
+let fillColor;
+colorPicker.addEventListener('change', (e) => fillColor = e.target.value);
 
 clearBtn.addEventListener('click', Clear);
 function Clear(){
@@ -56,7 +60,7 @@ function colorBoxes(box){
                 box.target.style["background-color"] = `#${randomColor}`;
             }
             else{
-                box.target.style["background-color"] = "cyan";
+                box.target.style["background-color"] = fillColor;
             }
         }
 }
@@ -82,6 +86,7 @@ document.getElementById('rainbow').addEventListener('click', () => {
     erase = 0;
 });
 document.getElementById('erase').addEventListener('click', () => erase = 1);
+colorPicker.addEventListener('click', () => {ok = 1; erase = 0;});
 
 
 
