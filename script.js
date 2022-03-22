@@ -23,20 +23,23 @@ function GenerateGrid(x){
             element.classList.add('grid-box');
             row.appendChild(element);
         }
-    }    
+    }
+    let gridBoxes = document.querySelectorAll('.grid-box');
+    gridBoxes.forEach((box) =>{
+        box.addEventListener('mouseover', (e) => {
+        if(e.buttons == 1)
+            e.target.classList.add('clicked');
+    })
+        box.addEventListener('mousedown', (e) => {
+            e.target.classList.add('clicked');
+            e.preventDefault();
+    })});
+    
 }
 
 document.getElementById('option-one').addEventListener('click', () => GenerateGrid(16));
 document.getElementById('option-two').addEventListener('click', () => GenerateGrid(32));
 document.getElementById('option-three').addEventListener('click', () => GenerateGrid(64));
 
-const gridBoxes = document.querySelectorAll('.grid-box');
 
-gridBoxes.forEach((box) =>{
-    box.addEventListener('mouseover', (e) => {
-    if(e.buttons == 1)
-        e.target.classList.add('clicked');
-})
-    box.addEventListener('mousedown', (e) => {
-        e.target.classList.add('clicked');
-})});
+
