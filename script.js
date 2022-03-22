@@ -3,12 +3,13 @@ const clearBtn = document.querySelector('#clear');
 
 GenerateGrid(16);
 
+let ok = 0;
 
 clearBtn.addEventListener('click', Clear);
 function Clear(){
-    const filled = document.querySelectorAll('.clicked');
-    filled.forEach(btn => {
-        btn.classList.remove('clicked');
+    const boxes = document.querySelectorAll('.grid-box');
+    boxes.forEach(box => {
+        box.style.cssText = "background-color: white;";
     })
 }
 
@@ -28,18 +29,42 @@ function GenerateGrid(x){
     gridBoxes.forEach((box) =>{
         box.addEventListener('mouseover', (e) => {
         if(e.buttons == 1)
-            e.target.classList.add('clicked');
+            colorBoxes(e);
     })
         box.addEventListener('mousedown', (e) => {
-            e.target.classList.add('clicked');
+            colorBoxes(e);
             e.preventDefault();
     })});
-    
+}
+
+function colorBoxes(box){
+    if(ok == 0){
+        let randomColor = generateRandomColor();
+        box.target.style["background-color"] = `#${randomColor}`;
+    }
+    else{
+        box.target.style["background-color"] = "cyan";
+    }
+}
+
+function generateRandomColor(){
+    let maxVal = 0xFFFFFF; // 16777215
+    let randomNumber = Math.random() * maxVal; 
+    randomNumber = Math.floor(randomNumber);
+    randomNumber = randomNumber.toString(16);
+    let randColor = randomNumber.padStart(6, 0);   
+    return randColor.toUpperCase();
 }
 
 document.getElementById('option-one').addEventListener('click', () => GenerateGrid(16));
 document.getElementById('option-two').addEventListener('click', () => GenerateGrid(32));
 document.getElementById('option-three').addEventListener('click', () => GenerateGrid(64));
+document.getElementById('rainbow').addEventListener('click', () => {
+    if(ok == 1)
+        ok = 0;
+    else
+        ok = 1;
+});
 
 
 
