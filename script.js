@@ -14,7 +14,8 @@ clearBtn.addEventListener('click', Clear);
 function Clear(){
     const boxes = document.querySelectorAll('.grid-box');
     boxes.forEach(box => {
-        box.style.cssText = "background-color: white;";
+        box.style.cssText = "background-color: #FFFFFB;";
+        box.classList.remove("clicked");
     })
 }
 
@@ -49,7 +50,7 @@ function GenerateGrid(x){
 
 function colorBoxes(box){
     if(erase == 1){
-        box.target.style["background-color"] = "white";
+        box.target.style["background-color"] = "#FFFFFB";
         box.target.classList.remove('clicked');
     }
     else{
@@ -75,15 +76,15 @@ function generateRandomColor(){
     return randColor.toUpperCase();
 }
 
-document.getElementById('option-one').addEventListener('click', () => GenerateGrid(16));
-document.getElementById('option-two').addEventListener('click', () => GenerateGrid(32));
-document.getElementById('option-three').addEventListener('click', () => GenerateGrid(64));
-document.getElementById('rainbow').addEventListener('click', () => {
+document.getElementById('option-one').addEventListener('click', (e) => {GenerateGrid(16);});
+document.getElementById('option-two').addEventListener('click', (e) => {GenerateGrid(32);});
+document.getElementById('option-three').addEventListener('click', (e) => {GenerateGrid(64);});
+document.getElementById('rainbow').addEventListener('click', (e) => {
     ok = 0;
     erase = 0;
 });
-document.getElementById('erase').addEventListener('click', () => erase = 1);
-colorPicker.addEventListener('click', () => {ok = 1; erase = 0;});
+document.getElementById('erase').addEventListener('click', (e) => {erase = 1;});
+colorPicker.addEventListener('click', (e) => {ok = 1; erase = 0;});
 
 
 

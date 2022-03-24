@@ -1,5 +1,6 @@
 body{
     display: flex;
+    background-color: #FFFFFB;
     justify-content: center;
 }
 .grid{
@@ -10,6 +11,7 @@ body{
     justify-content: stretch;
     flex-wrap: nowrap;
     border: solid 1px black;
+
 }
 .grid-row{
     display: flex;
@@ -20,4 +22,32 @@ body{
 .grid-box{
     width: 100%;
     height: 100%;
+}
+button{
+    padding: 15px;
+    border: none;
+    background-color: #083EFD;
+    border-radius: 50%;
+    color: #FFFFFB;
+}
+#erase{
+    background-color: #E12836;
+}
+#erase:hover{
+    background-color: #b31522;
+}
+#fillColor{
+    width: 80px;
+    height: 45px;
+    border: none;
+    background: none;
+    padding: 0;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+button:hover{
+    background-color: #0328ac;
 }
